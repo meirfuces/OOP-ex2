@@ -1,16 +1,21 @@
 package dataStructure;
 
+import java.util.HashMap;
+
 import utils.Point3D;
 
 public class vertex implements node_data {
 	int key;
+	HashMap<Integer, edge_data> edges; //the key here is the Destination
 	double weight;
 	int tag;
 	Point3D point;
+	// constractour
 public vertex (int key, Point3D p) {
 	this.key=key;
 	weight = Double.MAX_VALUE; // infinity 
 	this.point = new Point3D(p);
+	edges = new HashMap<Integer, edge_data>();
 }
 public vertex (Point3D p) {
 	this.point = new Point3D(p);

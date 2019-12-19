@@ -1,67 +1,94 @@
 package dataStructure;
 
 import java.util.Collection;
+import java.util.HashMap;
 
 public class DGraph implements graph{
-
+HashMap<Integer, vertex> graph ;
+int size_vertex;
+int size_edge;
+//consractour
+public DGraph () {
+	graph = new HashMap<Integer, vertex>();
+	size_vertex=0;
+	size_edge = 0;
+}
 	@Override
 	public node_data getNode(int key) {
-		// TODO Auto-generated method stub
-		return null;
+		if (graph.containsKey(key))
+			return (graph.get(key));
+		else {
+			
+		System.out.println("is not exist");
+		}
+		return null; //is not excist;
 	}
 
 	@Override
 	public edge_data getEdge(int src, int dest) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if (graph.containsKey(src)) 
+			if (graph.get(src).edges.containsKey(dest) )
+				return graph.get(src).edges.get(dest);
+	
+		//else
+		System.out.println("is not exist");
+
+			return null;
 	}
 
 	@Override
 	public void addNode(node_data n) {
-		// TODO Auto-generated method stub
-		
+		vertex p= (vertex) n;
+		graph.put(n.getKey(), p);
+		size_vertex++;
 	}
 
 	@Override
 	public void connect(int src, int dest, double w) {
-		// TODO Auto-generated method stub
-		
+		edge connect = new edge(src, src, w);
+	if (graph.containsKey(src)&&graph.get(src).edges.containsKey(dest)) {
+		graph.get(src).edges.put(dest, connect);
+		size_edge++;
+	}
 	}
 
 	@Override
 	public Collection<node_data> getV() {
 		// TODO Auto-generated method stub
-		return null;
+		return (Collection<node_data>) graph ;
 	}
 
 	@Override
 	public Collection<edge_data> getE(int node_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return (Collection<edge_data>) graph.get(node_id);
 	}
 
 	@Override
 	public node_data removeNode(int key) {
-		// TODO Auto-generated method stub
-		return null;
+ // connect between the other  
+		graph.remove(key);
+		size_vertex++;
+		return graph.get(key) ;
 	}
 
 	@Override
 	public edge_data removeEdge(int src, int dest) {
-		// TODO Auto-generated method stub
+		size_edge--;
 		return null;
 	}
 
 	@Override
 	public int nodeSize() {
 		// TODO Auto-generated method stub
-		return 0;
+		return size_vertex;
 	}
 
 	@Override
 	public int edgeSize() {
 		// TODO Auto-generated method stub
-		return 0;
+		return size_edge;
 	}
 
 	@Override
