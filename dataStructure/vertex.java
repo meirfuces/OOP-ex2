@@ -4,71 +4,115 @@ import java.util.HashMap;
 
 import utils.Point3D;
 
-public class vertex implements node_data {
-	int key;
-	HashMap<Integer, edge_data> edges; //the key here is the Destination
-	double weight;
-	int tag;
-	Point3D point;
-	// constractour
-public vertex (int key, Point3D p) {
-	this.key=key;
-	weight = Double.MAX_VALUE; // infinity 
-	this.point = new Point3D(p);
-	edges = new HashMap<Integer, edge_data>();
-}
-public vertex (Point3D p) {
-	this.point = new Point3D(p);
-}
-	@Override
-	public int getKey() {
-		return this.key;
-	}
+public class vertex implements node_data 
+{
+	public static int idBuilder=0;
+	
+	private  int key;
+	private double weight;
+	private int tag;
+	private String info ="";
+	private Point3D location;
 
-	@Override
-	public Point3D getLocation() {
-		// TODO Auto-generated method stub
-		return this.point;
+//**********Constructors***********************		
+	
+	public vertex()
+	{
+		idBuilder++;
+		this.key=idBuilder;
+		this.info="";
+		this.tag=0;
+		this.weight=0;
 	}
-
-	@Override
-	public void setLocation(Point3D p) {
-		this.point = new Point3D(p);
-	}
-
-	@Override
-	public double getWeight() {
-		// TODO Auto-generated method stub
-		return this.weight;
-	}
-
-	@Override
-	public void setWeight(double w) {
-		this.weight = w;
-	}
-
-	@Override
-	public String getInfo() {
-String ans = "the key is: " + this.key  +"\n"+ "point is : x: " 
-	+this.point.x() +" y: " +this.point.y() + " z- " +this.point.z();
-return ans;
-	}
-
-	@Override
-	public void setInfo(String s) {
-		// TODO Auto-generated method stub
+	
+	
+	public vertex (Point3D l, double w) 
+	{
+		idBuilder++;
+		this.key=idBuilder;
+		this.weight=w;
+		this.location=l;
+		this.info="";
+		this.tag=0;
 		
 	}
-
+	
+	public vertex (Point3D l) 
+	{
+		idBuilder++;
+		this.key=idBuilder;
+		this.weight=0;
+		this.location=l;
+		this.info="";
+		this.tag=0;
+		
+	}
+//**********Getters and Setters***********************	
 	@Override
-	public int getTag() {
-		// TODO Auto-generated method stub
+	public int getKey() 
+	{
+		return this.key;
+	}
+	
+	
+	@Override
+	public Point3D getLocation() 
+	{
+		return this.location;
+	}
+	
+	
+	@Override
+	public void setLocation(Point3D p)
+	{
+		this.location= new Point3D(p.x(),p.y());
+		
+	}
+	
+	
+	@Override
+	public double getWeight() 
+	{
+		return this.weight;
+	}
+	
+	
+	@Override
+	public void setWeight(double w) 
+	{
+		this.weight=w;
+		
+	}
+	
+	
+	@Override
+	public String getInfo() 
+	{
+		return this.info;
+	}
+	
+	
+	@Override
+	public void setInfo(String s) 
+	{
+		this.info=s;
+		
+	}
+	
+	
+	@Override
+	public int getTag() 
+	{
 		return this.tag;
 	}
-
+	
+	
 	@Override
-	public void setTag(int t) {
-		this.tag = t;		
+	public void setTag(int t) 
+	{
+		this.tag=t;
+		
 	}
+	
 
 }

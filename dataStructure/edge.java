@@ -1,16 +1,22 @@
 package dataStructure;
-public class edge implements edge_data {
-int Src;
-int Dest;
-double weight;
-int tag;
-public edge (int Source, int Dest, double  weight) {
+public class edge implements edge_data 
+{
+private int Src;
+private int Dest;
+private double weight;
+private int tag=0;
+private String info ="";
+
+public edge (int Source, int Dest, double  weight) 
+{
 	this.Src = Source;
 	this.Dest = Dest;
 	this.weight = weight;
 }
+
 	@Override
-	public int getSrc() {
+	public int getSrc() 
+	{
 		return this.Src;
 	}
 
@@ -25,22 +31,26 @@ public edge (int Source, int Dest, double  weight) {
 	}
 
 	@Override
-	public String getInfo() {
-		return null;
+	public String getInfo()
+	{
+		return this.info;
 	}
 
 	@Override
-	public void setInfo(String s) {
-		
+	public void setInfo(String s) 
+	{
+		this.info=s;
 	}
 
 	@Override
-	public int getTag() {
+	public int getTag() 
+	{
 		return this.tag;
 	}
 
 	@Override
-	public void setTag(int t) {
+	public void setTag(int t) 
+	{
 		this.tag = t;		
 	}
 
